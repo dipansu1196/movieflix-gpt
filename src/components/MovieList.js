@@ -1,14 +1,22 @@
 // src/components/MovieList.js
-import MovieCard from   "../components/MovieCard";
-const MovieList = ({title, movies}) => {
+import MovieCard from "../components/MovieCard";
+
+const MovieList = ({ title, movies }) => {
     if (!movies) return null;
     if (!Array.isArray(movies)) return null;
 
     return (
-        <div className="py-6">
-            <h1 className="text-3xl font-bold py-4 text-white">{title}</h1>
-            <div className="flex overflow-x-scroll scrollbar-hide">
-                <div className="flex gap-4">
+        <div className='mb-5'>
+
+
+                <h2 className='text-2xl text-white pt-3 capitalize font-bold'>{title}</h2>
+
+                <div className='mt-1  flex transition-all overflow-x-auto scrollbar-hide'>
+
+
+
+                    <div className='flex justify-evenly mt-4 '>
+
                     {movies.map(movie => (
                         <MovieCard 
                             key={movie.id} 
@@ -22,3 +30,6 @@ const MovieList = ({title, movies}) => {
 };
 
 export default MovieList;
+
+
+
