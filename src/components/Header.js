@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { addUser, removeUser } from '../utils/userSlice';
 import { netflixIcon } from '../utils/constant';
 import { customProfileImage } from '../utils/constant';
-import { toggleGptSearchView } from '../utils/gptSlice';
+import { toggleGptSearch } from '../utils/gptSlice';
 import { changeLanguage}  from '../utils/configSlice';
 const Header = () => {
     const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const Header = () => {
     const handleGptSearchClick = () => {
         //Toggle GPT Search 
 
-    dispatch(toggleGptSearchView());
+    dispatch(toggleGptSearch());
     }
 
 const handleLanguageChange = (event) => {
