@@ -1,4 +1,4 @@
-import { LOGO } from '../utils/constant';
+import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constant';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import {auth} from '../utils/firebase';
 import {useNavigate} from 'react-router-dom';
@@ -8,10 +8,12 @@ import { useEffect } from 'react';
 import { addUser, removeUser } from '../utils/userSlice';
 import { netflixIcon } from '../utils/constant';
 import { customProfileImage } from '../utils/constant';
-
+import { toggleGptSearchView } from '../utils/gptSlice';
+import { changeLanguage}  from '../utils/configSlice';
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const showSearch= useSelector((store) => store.gpt?.showGptSearch);
     const user = useSelector((store) => store.user?.user);
     
     // Netflix default avatar for main icon
@@ -48,7 +50,16 @@ const Header = () => {
 
         return () => unsubscribe();
     }, []);
+    const handleGptSearchClick = () => {
+        //Toggle GPT Search 
 
+    dispatch(toggleGptSearchView());
+    }
+
+const handleLanguageChange = (event) => {
+    const selectedLanguage = event.target.value;
+    dispatch(changeLanguage(selectedLanguage));
+}
     return (
         <div className="absolute w-screen bg-gradient-to-b from-black z-50">
             {user && (
@@ -60,8 +71,28 @@ const Header = () => {
                             alt="logo"
                         />
                     </div>
+                   {showSearch&& <select className="bg-black text-white border border-gray-700 rounded-md p-2 focus:outline-none focus:ring-2
+                     focus:ring-purple-600 focus:border-transparent ml-96" onChange={handleLanguageChange}>
+                        {SUPPORTED_LANGUAGES.map((lang) => (
+                            <option key={lang.identifier} value={lang.identifier}>
+                                {lang.name}
+                            </option>
+                        ))}
+                       
+                    </select>}
 
                     <div className="flex items-center gap-4">
+                    <button 
+    className="flex items-center gap-2 py-2 px-4 bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-lg hover:from-purple-700 hover:to-purple-900 transition-all duration-300 font-semibold shadow-md hover:shadow-xl"
+    onClick={handleGptSearchClick}
+>
+    {/* Search Icon */}
+    
+    
+    {/* Button Text */}
+    <span>{showSearch? "HomePage" :" GPT Search"}</span>
+</button>
+
                         <div className="flex items-center gap-2 relative group">
                             {/* Main header icon - Netflix default avatar */}
                             <img 
