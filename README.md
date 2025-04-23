@@ -1,69 +1,102 @@
-# Getting Started with Create React App
+# 🎬MovieFlix GPT – Personalized Movie Recommendations with DeepSeek R1 Zero
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to MovieFlix GPT, a Netflix-inspired web app that delivers AI-powered movie recommendations using DeepSeek R1 Zero (Free). Explore movies, watch trailers, and get personalized suggestions based on your unique viewing habits.
 
-## Available Scripts
 
-In the project directory, you can run:
+## 🎯 Key Features
 
-### `npm start`
+## Movie Discovery
+Browse trending, top-rated, and upcoming movies via TMDB API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Watch YouTube trailers instantly
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Filter by genre, release year, and ratings
 
-### `npm test`
+ ## 🔐 Secure & Personalized
+Firebase Authentication (Email/Google/GitHub login)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Save favorites and track watch history
 
-### `npm run build`
+DeepSeek R1 Zero-powered recommendations
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ ## 🧠 AI-Powered Recommendations
+Powered by DeepSeek R1 Zero (Free), our model analyzes:
+✔ Your watch history & ratings
+✔ Novelty-seeking behavior (preference for new vs familiar genres)
+✔ Forgetfulness patterns (how your interests shift over time)
+✔ Contextual signals (time of day, device, session length)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Sign in ( Email)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Browse movies and rate what you like
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Get AI-driven recommendations in the "For You" section
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🛠️ Developer Setup
+Prerequisites
+Node.js (v18+)
 
-## Learn More
+## Firebase project (for auth & hosting)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## TMDB API key
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation
+bash
+git clone https://github.com/rajatrawal/movieflix-gpt.git
+cd movieflix-gpt
+npm install
+Configure Environment
+Rename .env.example to .env.local
 
-### Code Splitting
+## Add your keys:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+env
+VITE_TMDB_API_KEY=your_tmdb_key
+VITE_FIREBASE_API_KEY=your_firebase_config
+Run Locally
+bash
+npm run dev
+Open http://localhost:3000
 
-### Analyzing the Bundle Size
+## 🔧 Tech Stack
+Category	Technology
+Frontend	React, Vite
+Backend	Firebase (Auth, Hosting)
+AI Model	DeepSeek R1 Zero (Free)
+Movie Data	TMDB API
+Styling	Tailwind CSS
+🤖 How DeepSeek R1 Zero Enhances Recommendations
+Unlike traditional collaborative filtering, DeepSeek R1 Zero uses:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Zero-shot learning → Works even with sparse user data
 
-### Making a Progressive Web App
+Novelty detection → Suggests fresh content based on your taste
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Forgetfulness modeling → Adjusts recommendations over time
 
-### Advanced Configuration
+## Diagram
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![deepseek_mermaid_20250423_96220d](https://github.com/user-attachments/assets/0c780a18-fb49-4e54-9936-52de9749b4db)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+## 📈 Future Roadmap
+Multi-user profiles (Family/Shared accounts)
+
+Netflix-like "Skip Intro" feature
+
+DeepSeek Chat Integration (Ask AI: "Suggest a thriller with a twist ending")
+
+## 🤝 Contribute
+Want to improve MovieFlix GPT?
+🔹 Report bugs → GitHub Issues
+🔹 Submit PRs → New features, optimizations, or UI upgrades
+
+🎬 Ready to find your next favorite movie? Try MovieFlix GPT Now! 🍿
+
 
 ### `npm run build` fails to minify
 
