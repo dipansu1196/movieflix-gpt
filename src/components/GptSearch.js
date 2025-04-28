@@ -11,6 +11,7 @@ const GptSearch=()=>{
                             <div className="w-screen h-screen bg-black bg-opacity-50"></div>
                         </div>
         <GptSearchBar/>
+        <GptMovieSuggestion/>
         
             </div>
             )

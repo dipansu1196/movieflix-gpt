@@ -43,18 +43,11 @@ const GptSearchBar = () => {
         dispatch(setError(null));
 
         try {
-            const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query : " + 
-                searchInput.current.value + 
-                " only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
+            const gptQuery = `Act as a Movie Recommendation system and suggest some movies for the query: ${searchInput.current.value}. Only give me names of 5 movies, comma-separated.`;
 
             const completion = await openai.chat.completions.create({
                 model: "deepseek/deepseek-r1-zero:free",
-                messages: [
-                    {
-                        role: "user",
-                        content: gptQuery
-                    }
-                ]
+                messages: [{ role: "user", content: gptQuery }],
             });
 
             console.log("Raw API Response:", completion);
@@ -66,10 +59,12 @@ const GptSearchBar = () => {
             const movieList = completion.choices[0].message.content;
             console.log("Movie List:", movieList);
 
+            // Clean and process the movie list
             const movies = movieList
-                .split(',')
-                .map(movie => movie.trim())
-                .filter(movie => movie && movie.length > 0);
+                .replace(/\\boxed{|}/g, "") // Remove unwanted characters
+                .split(",") // Split by commas
+                .map((movie) => movie.trim()) // Trim whitespace
+                .filter((movie) => movie && movie.length > 0); // Remove empty entries
 
             console.log("Processed Movies:", movies);
 
@@ -78,13 +73,13 @@ const GptSearchBar = () => {
             }
 
             // Search TMDB for each movie
-            const promiseArray = movies.map(movie => searchMovieTmdb(movie));
+            const promiseArray = movies.map((movie) => searchMovieTmdb(movie));
             const tmdbResults = await Promise.all(promiseArray);
             console.log("TMDB Results:", tmdbResults);
 
             // Filter out null results and update store
-            const validResults = tmdbResults.filter(result => result !== null);
-            dispatch(setMovieResults(validResults));
+          
+            dispatch(setMovieResults({ movieNames: movies, movieResults: tmdbResults }));
             searchInput.current.value = "";
 
         } catch (error) {
